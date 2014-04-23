@@ -60,16 +60,23 @@
    }
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+ static NSString *CellIdentifier = @"Cell";
+ UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+ 
+   if (indexPath.section == 0) {
+      cell.textLabel.text = @"I am in section 0";
+   } else if (indexPath.section == 1) {
+      cell.textLabel.text = @"another section";
+   } else {
+      cell.textLabel.text = [NSString stringWithFormat:@"cell %i", indexPath.row];
+   }
+
+ return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
